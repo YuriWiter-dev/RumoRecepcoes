@@ -6,15 +6,16 @@ import { NavbarComponent } from './Navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { CopaComponent } from './copa/copa.component';
 // Declare e exporte a variável routes
-export const routes: Routes = [
-  { path: '',  component: NavbarComponent }, 
+const routes: Routes= [
+  { path: 'garcom',  component: NavbarComponent }, 
   { path: 'cozinha', component: CozinhaComponent },
   { path: 'garcom', component: GarcomComponent },
   { path: 'copa', component: CopaComponent },
 ];
 
 @NgModule({
-  imports: [],
+  imports: [ CommonModule,
+    RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule  { }

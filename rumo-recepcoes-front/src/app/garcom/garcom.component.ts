@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { NavbarComponent } from '../Navbar/navbar.component';
 
 @Component({
-  selector: 'app-garcon',
+  selector: 'app-garcom',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterModule,
+    NavbarComponent
+  ],
   templateUrl: './garcom.component.html',
   styleUrl: './garcom.component.scss'
 })
