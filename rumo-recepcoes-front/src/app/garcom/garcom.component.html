@@ -1,22 +1,22 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-  <div class="text-center mb-4"> <!-- Alinha conteúdo ao centro e adiciona margem inferior -->
+  <div class="text-center mb-4">
     <h3>Faça o seu pedido!</h3>
   </div>
 
-  <form>
+  <form id="pedidoForm">
     <div class="row mb-3">
       <div class="col-sm-8 mb-3">
-        <input type="text" class="form-control" placeholder="Nome" />
+        <input type="text" class="form-control" placeholder="Nome" required />
       </div>
       <div class="col-sm-4 mb-3">
-        <input type="text" class="form-control" placeholder="Mesa" />
+        <input type="text" class="form-control" placeholder="Mesa" required />
       </div>
     </div>
     <div class="row mb-3">
       <div class="col-sm mb-3">
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" aria-label="Default select example" required>
           <option selected>Bebida</option>
           <option value="1">One</option>
           <option value="2">Two</option>
@@ -24,15 +24,14 @@
         </select>
       </div>
       <div class="col-sm mb-3">
-        <input type="text" class="form-control" placeholder="Quantidade" />
+        <input type="text" class="form-control" placeholder="Quantidade" required />
       </div>
       <div class="col-sm mb-3">
-        <input type="text" class="form-control" placeholder="Prato" />
+        <input type="text" class="form-control" placeholder="Prato" required />
       </div>
     </div>
-    <button type="button" class="btn btn-success">Avançar</button>
+    <button type="submit" class="btn btn-success" id="submitBtn" disabled>Avançar</button>
   </form>
-
   <div class="text-center mb-4"> <!-- Alinha conteúdo ao centro e adiciona margem inferior -->
     <h3>Últimos pedidos</h3>
   </div>
@@ -42,9 +41,10 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Mesa</th>
+          <th scope="col">Bebida</th>
+          <th scope="col">Prazo</th>
         </tr>
       </thead>
       <tbody>
@@ -69,3 +69,21 @@
     </table>
   </div>
 </div>
+
+
+<script>
+  // Seleciona o formulário e o botão de enviar
+  const form = document.getElementById('pedidoForm');
+  const submitBtn = document.getElementById('submitBtn');
+
+  // Adiciona um evento de mudança a todos os campos de entrada no formulário
+  form.addEventListener('input', () => {
+    // Verifica se todos os campos obrigatórios estão preenchidos
+    const allFieldsValid = Array.from(form.elements).every(element => {
+      return (element.tagName !== 'BUTTON' && element.required && element.checkValidity());
+    });
+
+    // Ativa ou desativa o botão de enviar com base na validade dos campos
+    submitBtn.disabled = !allFieldsValid;
+  });
+</script>

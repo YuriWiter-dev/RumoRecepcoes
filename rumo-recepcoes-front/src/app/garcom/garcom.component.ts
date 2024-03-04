@@ -13,5 +13,11 @@ import { NavbarComponent } from '../Navbar/navbar.component';
   styleUrl: './garcom.component.scss'
 })
 export class GarcomComponent {
-
+  // openSnackBar(msg: string, eUmErro) {
+  //   if (eUmErro) {
+  //     this.toastr.error(msg);
+  //   } else {
+  //     this.toastr.success(msg);
+  //   }
+  // }
 }
