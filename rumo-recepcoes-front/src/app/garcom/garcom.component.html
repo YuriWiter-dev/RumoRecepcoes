@@ -1,0 +1,93 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="text-center mb-4">
+    <h3>Faça o seu pedido!</h3>
+  </div>
+  <!--  -->
+  <form #pedidoForm="ngForm" (ngSubmit)="submitForm(pedidoForm)">
+    <div class="row mb-3">
+      <div class="col-sm-8 mb-3">
+        <input type="text" class="form-control" id="nome" placeholder="Nome" required [(ngModel)]="nomeSolicitante"
+          name="nomeSolicitante" />
+      </div>
+      <div class="col-sm-4 mb-3">
+        <input type="text" class="form-control" id="mesa" placeholder="Mesa" required [(ngModel)]="mesa" name="mesa" />
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm mb-3">
+        <select class="form-select" id="bebida" aria-label="Default select example" required
+          [(ngModel)]="bebidaSelecionada" name="bebidaSelecionada">
+          <option value="" selected disabled>Bebida</option>
+          <option *ngFor="let bebida of bebidasDisponiveis" [value]="bebida.nome">{{ bebida.nome }}</option>
+        </select>
+      </div>
+      <div class="col-sm mb-3">
+        <input type="number" class="form-control" id="quantidade_bebida" placeholder="Quantidade" required
+          [(ngModel)]="quantidadeBebida" name="quantidadeBebida" />
+      </div>
+
+      <div class="col-sm mb-3">
+        <select class="form-select" id="prato" aria-label="Default select example" required
+          [(ngModel)]="pratoSelecionado" name="pratoSelecionado">
+          <option value="" selected disabled>Prato</option>
+          <option *ngFor="let prato of pratosDisponiveis" [(ngModel)]="prato.nome" [value]="prato.nome">{{ prato.nome }}</option>
+        </select>
+      </div>
+      <div class="col-sm mb-3">
+        <input type="number" class="form-control" id="quantidade_prato" placeholder="Quantidade" required
+          [(ngModel)]="quantidadePrato" name="quantidadePrato" />
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success" id="submitBtn" [disabled]="!pedidoForm.valid">Avançar</button>
+  </form>
+
+  <div class="text-center mb-4"> <!-- Alinha conteúdo ao centro e adiciona margem inferior -->
+    <h3>Últimos pedidos</h3>
+  </div>
+
+  <div class="container">
+    <table class="table" *ngIf="pedidos.length > 0">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Mesa</th>
+          <th scope="col">Bebidas</th>
+          <th scope="col">Pratos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pedido of pedidos; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ pedido.nomeSolicitante }}</td>
+          <td>{{ pedido.mesa }}</td>
+          <td>{{ pedido.bebida.nome }}
+          </td>
+          <td>
+            <td>{{ pedido.prato.nome }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="pedidos.length === 0" class="text-center">Nenhum pedido disponível.</div>
+  </div>
+</div>
+
+<script>
+  // Seleciona o formulário e o botão de enviar
+  const form = document.getElementById('pedidoForm');
+  const submitBtn = document.getElementById('submitBtn');
+
+  // Adiciona um evento de mudança a todos os campos de entrada no formulário
+  form.addEventListener('input', () => {
+    // Verifica se todos os campos obrigatórios estão preenchidos
+    const allFieldsValid = Array.from(form.elements).every(element => {
+      return (element.tagName !== 'BUTTON' && element.required && element.checkValidity());
+    });
+
+    // Ativa ou desativa o botão de enviar com base na validade dos campos
+    submitBtn.disabled = !allFieldsValid;
+  });
+</script>
