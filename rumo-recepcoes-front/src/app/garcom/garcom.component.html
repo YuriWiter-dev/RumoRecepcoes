@@ -32,7 +32,8 @@
         <select class="form-select" id="prato" aria-label="Default select example" required
           [(ngModel)]="pratoSelecionado" name="pratoSelecionado">
           <option value="" selected disabled>Prato</option>
-          <option *ngFor="let prato of pratosDisponiveis" [(ngModel)]="prato.nome" [value]="prato.nome">{{ prato.nome }}</option>
+          <option *ngFor="let prato of pratosDisponiveis" [(ngModel)]="prato.nome" [value]="prato.nome">{{ prato.nome }}
+          </option>
         </select>
       </div>
       <div class="col-sm mb-3">
@@ -56,6 +57,7 @@
           <th scope="col">Mesa</th>
           <th scope="col">Bebidas</th>
           <th scope="col">Pratos</th>
+          <th scope="col">Quantidade</th>
         </tr>
       </thead>
       <tbody>
@@ -63,11 +65,9 @@
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ pedido.nomeSolicitante }}</td>
           <td>{{ pedido.mesa }}</td>
-          <td>{{ pedido.bebida.nome }}
-          </td>
-          <td>
-            <td>{{ pedido.prato.nome }}
-          </td>
+          <td>{{ pedido.bebida.nome }}</td>
+          <td>{{ pedido.prato.nome }} </td>
+          <td>{{ pedido.prato.quantidade }} </td>
         </tr>
       </tbody>
     </table>

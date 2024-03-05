@@ -98,8 +98,6 @@ export class GarcomComponent implements OnInit {
 
     if (form.valid) {
 
-      
-      debugger;
 
       const pedido = {
         nomeSolicitante: this.nomeSolicitante,
@@ -114,11 +112,12 @@ export class GarcomComponent implements OnInit {
       this._garcomService.salvarPedido(pedido)
         .subscribe(
           response => {
-            console.log('Pedido salvo com sucesso:', response);
-            // Faça o que precisar com a resposta do backend, exibir mensagem de sucesso, etc.
+            this.openSnackBar('Pedido efetuado com sucesso.',true);
+            window.location.reload();
+            this.getPedidos;
           },
           error => {
-            console.error('Erro ao salvar o pedido:', error);
+            this.openSnackBar('Erro ao efetuar o pedido.',true);
             // Trate o erro, exiba uma mensagem de erro, etc.
           }
         );
