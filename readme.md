@@ -40,6 +40,7 @@ O Sistema para Restaurante é uma aplicação web desenvolvida para coletar info
 ### Banco de Dados
 - Recomenda-se o uso do SQL Server para o armazenamento de dados.
 - Alternativamente, pode ser utilizado um banco de dados não relacional, desde que as informações para executar a aplicação sejam fornecidas.
+- Foi ultilizado o SQLITE, então quando o projeto backend for iniciado o banco é gerado automaticamente.
 
 ## Repositório e Documentação
 - O código-fonte do projeto pode ser hospedado em um repositório Git, como GitHub ou Bitbucket, para controle de versão e colaboração.
@@ -65,11 +66,10 @@ Antes de iniciar, verifique se você tem os seguintes requisitos instalados em s
 - SQL Server (ou outro banco de dados compatível)
 
 ## Configuração do Backend (C#)
-1. Clone o repositório do backend em C# para sua máquina local.
+1. Clone o repositório para sua máquina local.
 2. Abra o projeto no Visual Studio.
 3. Certifique-se de que as dependências foram restauradas e o projeto foi compilado com sucesso.
-4. Configure a conexão com o banco de dados no arquivo `appsettings.json`.
-5. Execute o projeto no Visual Studio.
+4. Execute o projeto no Visual Studio.
 
 ## Configuração do Frontend (Angular)
 1. Clone o repositório do frontend Angular para sua máquina local.
@@ -87,6 +87,7 @@ Após iniciar o backend e o frontend, você pode acessar o aplicativo em seu nav
 - Certifique-se de que o banco de dados esteja configurado corretamente e acessível para o backend.
 
 Caso haja alguma dúvida ou necessidade de esclarecimento adicional, por favor, não hesite em entrar em contato para obter assistência.
+[Meu Perfil no LinkedIn](https://www.linkedin.com/in/yuri-witer-12aba9181/)
 
 
 
