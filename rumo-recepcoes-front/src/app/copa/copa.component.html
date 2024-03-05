@@ -1,36 +1,24 @@
 <app-navbar></app-navbar>
 <div class="container">
-    <div class="text-center mb-4"> <!-- Alinha conteúdo ao centro e adiciona margem inferior -->
-        <h3>Bar!</h3>
-    </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Mesa</th>
-                <th scope="col">Bebida</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td><button type="button" class="btn btn-warning">Editar</button></td>
-                <td><button type="button" class="btn btn-danger">Deletar</button></td>
-            </tr>
-        </tbody>
+  <div class="container">
+    <table class="table" *ngIf="copas.length > 0">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Mesa</th>
+          <th scope="col">Pratos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let copa of copas; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ copa.nomeSolicitante }}</td>
+          <td>{{ copa.mesa }}</td>
+          <td>{{ copa.bebida.nome}}</td>
+        </tr>
+      </tbody>
     </table>
+    <div *ngIf="copas.length === 0" class="text-center">Nenhum pedido disponível.</div>
+  </div>
 </div>

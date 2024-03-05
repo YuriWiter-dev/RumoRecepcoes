@@ -8,10 +8,8 @@ import { CozinhaComponent } from './cozinha/cozinha.component';
 
 @Component({
     selector: 'app-root',
-    standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    imports: [RouterOutlet, CommonModule, NavbarComponent, AppRoutingModule, GarcomComponent,CozinhaComponent]
 })
 export class AppComponent {
   title = 'Rumo Recepções';
